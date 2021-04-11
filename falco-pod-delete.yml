@@ -1,0 +1,13 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  falco-pod-delete:
+    lang: golang-middleware
+    handler: ./falco-pod-delete
+    image: devopps/falco-pod-delete:latest # be careful this line, it should be your docker id.
+    annotations:
+      com.openfaas.serviceaccount: falco-pod-delete
+    build_args:
+      GO111MODULE: on
